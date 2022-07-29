@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A61DD9FB1E66BE9300278F2D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61DD9FA1E66BE9300278F2D /* AVFoundation.framework */; };
+		A6259A861E69889E0089146B /* PjSipMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6259A851E69889E0089146B /* PjSipMessage.m */; };
+		A6D3BE311E6845AF00949DCF /* VialerPJSIP in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D3BE301E6845AF00949DCF /* VialerPJSIP */; };
+		A6D8F1201E65E482007D5702 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D8F11F1E65E482007D5702 /* CallKit.framework */; };
+		A6F413A01E38CE9600340CC2 /* PjSipAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F413931E38CE9600340CC2 /* PjSipAccount.m */; };
+		A6F413A11E38CE9600340CC2 /* PjSipCall.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F413951E38CE9600340CC2 /* PjSipCall.m */; };
+		A6F413A31E38CE9600340CC2 /* PjSipEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F413991E38CE9600340CC2 /* PjSipEndpoint.m */; };
+		A6F413A41E38CE9600340CC2 /* PjSipModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4139B1E38CE9600340CC2 /* PjSipModule.m */; };
+		A6F413A51E38CE9600340CC2 /* PjSipUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4139D1E38CE9600340CC2 /* PjSipUtil.m */; };
+		DD8F1BDB1F58910A00714D48 /* PjSipVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F1BDA1F58910A00714D48 /* PjSipVideo.m */; };
+		DD8F1BDE1F5895D900714D48 /* PjSipRemoteVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F1BDD1F5895D900714D48 /* PjSipRemoteVideoViewManager.m */; };
+		DD8F1BE11F58974C00714D48 /* PjSipPreviewVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F1BE01F58974C00714D48 /* PjSipPreviewVideoViewManager.m */; };
+		FD906A282012546C0066368D /* VialerPJSIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD906A272012546C0066368D /* VialerPJSIP.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DDFF87501D79D6F50096A8BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A61DD9FA1E66BE9300278F2D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A6259A821E6988470089146B /* PjSipMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PjSipMessage.h; sourceTree = "<group>"; };
+		A6259A851E69889E0089146B /* PjSipMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipMessage.m; sourceTree = "<group>"; };
+		A6D3BE301E6845AF00949DCF /* VialerPJSIP */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = VialerPJSIP; path = VialerPJSIP.framework/VialerPJSIP; sourceTree = "<group>"; };
+		A6D8F11F1E65E482007D5702 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		A6F413921E38CE9600340CC2 /* PjSipAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PjSipAccount.h; sourceTree = "<group>"; };
+		A6F413931E38CE9600340CC2 /* PjSipAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipAccount.m; sourceTree = "<group>"; };
+		A6F413941E38CE9600340CC2 /* PjSipCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PjSipCall.h; sourceTree = "<group>"; };
+		A6F413951E38CE9600340CC2 /* PjSipCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipCall.m; sourceTree = "<group>"; };
+		A6F413981E38CE9600340CC2 /* PjSipEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PjSipEndpoint.h; sourceTree = "<group>"; };
+		A6F413991E38CE9600340CC2 /* PjSipEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipEndpoint.m; sourceTree = "<group>"; };
+		A6F4139A1E38CE9600340CC2 /* PjSipModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PjSipModule.h; sourceTree = "<group>"; };
+		A6F4139B1E38CE9600340CC2 /* PjSipModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipModule.m; sourceTree = "<group>"; };
+		A6F4139C1E38CE9600340CC2 /* PjSipUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PjSipUtil.h; sourceTree = "<group>"; };
+		A6F4139D1E38CE9600340CC2 /* PjSipUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipUtil.m; sourceTree = "<group>"; };
+		DD8F1BD91F5890FB00714D48 /* PjSipVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PjSipVideo.h; sourceTree = "<group>"; };
+		DD8F1BDA1F58910A00714D48 /* PjSipVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipVideo.m; sourceTree = "<group>"; };
+		DD8F1BDC1F5895CF00714D48 /* PjSipRemoteVideoViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PjSipRemoteVideoViewManager.h; sourceTree = "<group>"; };
+		DD8F1BDD1F5895D900714D48 /* PjSipRemoteVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipRemoteVideoViewManager.m; sourceTree = "<group>"; };
+		DD8F1BDF1F58974100714D48 /* PjSipPreviewVideoViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PjSipPreviewVideoViewManager.h; sourceTree = "<group>"; };
+		DD8F1BE01F58974C00714D48 /* PjSipPreviewVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PjSipPreviewVideoViewManager.m; sourceTree = "<group>"; };
+		DDFF87521D79D6F50096A8BE /* libRTCPjSip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRTCPjSip.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD906A272012546C0066368D /* VialerPJSIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VialerPJSIP.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDFF874F1D79D6F50096A8BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61DD9FB1E66BE9300278F2D /* AVFoundation.framework in Frameworks */,
+				A6D8F1201E65E482007D5702 /* CallKit.framework in Frameworks */,
+				FD906A282012546C0066368D /* VialerPJSIP.framework in Frameworks */,
+				A6D3BE311E6845AF00949DCF /* VialerPJSIP in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6A12F5D1E65A8400002151D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6D3BE301E6845AF00949DCF /* VialerPJSIP */,
+				FD906A272012546C0066368D /* VialerPJSIP.framework */,
+				A61DD9FA1E66BE9300278F2D /* AVFoundation.framework */,
+				A6D8F11F1E65E482007D5702 /* CallKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6D0E0DF1E38B1AC0062C9B3 /* RTCPjSip */ = {
+			isa = PBXGroup;
+			children = (
+				A6F413921E38CE9600340CC2 /* PjSipAccount.h */,
+				A6F413931E38CE9600340CC2 /* PjSipAccount.m */,
+				A6F413941E38CE9600340CC2 /* PjSipCall.h */,
+				A6F413951E38CE9600340CC2 /* PjSipCall.m */,
+				A6F413981E38CE9600340CC2 /* PjSipEndpoint.h */,
+				A6F413991E38CE9600340CC2 /* PjSipEndpoint.m */,
+				A6F4139A1E38CE9600340CC2 /* PjSipModule.h */,
+				A6F4139B1E38CE9600340CC2 /* PjSipModule.m */,
+				A6F4139C1E38CE9600340CC2 /* PjSipUtil.h */,
+				A6F4139D1E38CE9600340CC2 /* PjSipUtil.m */,
+				A6259A821E6988470089146B /* PjSipMessage.h */,
+				A6259A851E69889E0089146B /* PjSipMessage.m */,
+				DD8F1BD91F5890FB00714D48 /* PjSipVideo.h */,
+				DD8F1BDA1F58910A00714D48 /* PjSipVideo.m */,
+				DD8F1BDC1F5895CF00714D48 /* PjSipRemoteVideoViewManager.h */,
+				DD8F1BDD1F5895D900714D48 /* PjSipRemoteVideoViewManager.m */,
+				DD8F1BDF1F58974100714D48 /* PjSipPreviewVideoViewManager.h */,
+				DD8F1BE01F58974C00714D48 /* PjSipPreviewVideoViewManager.m */,
+			);
+			path = RTCPjSip;
+			sourceTree = "<group>";
+		};
+		DDFF87491D79D6F50096A8BE = {
+			isa = PBXGroup;
+			children = (
+				A6D0E0DF1E38B1AC0062C9B3 /* RTCPjSip */,
+				DDFF87531D79D6F50096A8BE /* Products */,
+				A6A12F5D1E65A8400002151D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DDFF87531D79D6F50096A8BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDFF87521D79D6F50096A8BE /* libRTCPjSip.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDFF87511D79D6F50096A8BE /* RTCPjSip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDFF875B1D79D6F50096A8BE /* Build configuration list for PBXNativeTarget "RTCPjSip" */;
+			buildPhases = (
+				DDFF874E1D79D6F50096A8BE /* Sources */,
+				DDFF874F1D79D6F50096A8BE /* Frameworks */,
+				DDFF87501D79D6F50096A8BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RTCPjSip;
+			productName = RTCPjSip;
+			productReference = DDFF87521D79D6F50096A8BE /* libRTCPjSip.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDFF874A1D79D6F50096A8BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Vadim Ruban";
+				TargetAttributes = {
+					DDFF87511D79D6F50096A8BE = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = WN3R4938H9;
+					};
+				};
+			};
+			buildConfigurationList = DDFF874D1D79D6F50096A8BE /* Build configuration list for PBXProject "RTCPjSip" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DDFF87491D79D6F50096A8BE;
+			productRefGroup = DDFF87531D79D6F50096A8BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDFF87511D79D6F50096A8BE /* RTCPjSip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDFF874E1D79D6F50096A8BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD8F1BE11F58974C00714D48 /* PjSipPreviewVideoViewManager.m in Sources */,
+				A6259A861E69889E0089146B /* PjSipMessage.m in Sources */,
+				A6F413A11E38CE9600340CC2 /* PjSipCall.m in Sources */,
+				A6F413A31E38CE9600340CC2 /* PjSipEndpoint.m in Sources */,
+				A6F413A41E38CE9600340CC2 /* PjSipModule.m in Sources */,
+				A6F413A01E38CE9600340CC2 /* PjSipAccount.m in Sources */,
+				DD8F1BDE1F5895D900714D48 /* PjSipRemoteVideoViewManager.m in Sources */,
+				A6F413A51E38CE9600340CC2 /* PjSipUtil.m in Sources */,
+				DD8F1BDB1F58910A00714D48 /* PjSipVideo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DDFF87591D79D6F50096A8BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DDFF875A1D79D6F50096A8BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DDFF875C1D79D6F50096A8BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					PJ_AUTOCONF,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../react-native/React/**",
+					"\"$(SRCROOT)/VialerPJSIP/Headers\"",
+				);
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VialerPJSIP.framework",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DDFF875D1D79D6F50096A8BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = PJ_AUTOCONF;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../react-native/React/**",
+					"\"$(SRCROOT)/VialerPJSIP/Headers\"",
+				);
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VialerPJSIP.framework",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDFF874D1D79D6F50096A8BE /* Build configuration list for PBXProject "RTCPjSip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDFF87591D79D6F50096A8BE /* Debug */,
+				DDFF875A1D79D6F50096A8BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DDFF875B1D79D6F50096A8BE /* Build configuration list for PBXNativeTarget "RTCPjSip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDFF875C1D79D6F50096A8BE /* Debug */,
+				DDFF875D1D79D6F50096A8BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDFF874A1D79D6F50096A8BE /* Project object */;
+}
