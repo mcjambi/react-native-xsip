@@ -95,8 +95,8 @@ endpoint.addListener("call_terminated", (newCall) => {
 
 ## API
 
-1. [Startup](https://github.com/mcjambi/react-native-xsip/blob/master/docs/startup.md)
-2. [Accounts](https://github.com/mcjambi/react-native-xsip/blob/master/docs/accounts.md)
-3. [Calls](https://github.com/mcjambi/react-native-xsip/blob/master/docs/calls.md)
-4. [Settings](https://github.com/mcjambi/react-native-xsip/blob/master/docs/settings.md)
+1. [Startup](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
+2. [Accounts](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
+3. [Calls](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
+4. [Settings](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
 
