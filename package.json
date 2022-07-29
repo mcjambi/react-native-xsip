@@ -5,7 +5,7 @@
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
   },
   "author": {
-    "name": "Jam Viete",
+    "name": "Jam Viet",
     "email": "mcjambi@gmail.com"
   },
   "license": "GPL-3.0",
@@ -47,5 +47,5 @@
     "type": "git",
     "url": "git+https://github.com/mcjambi/react-native-xsip.git"
   },
-  "version": "2.9.3"
+  "version": "2.9.4"
 }
