@@ -100,3 +100,6 @@ endpoint.addListener("call_terminated", (newCall) => {
 3. [Calls](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
 4. [Settings](https://github.com/mcjambi/react-native-xsip/tree/main/docs)
 
+## Contact me
+
+- If it is not working for a resion, please contact me at mcjambi(at)gmail.com or jamvietdotcom(at)gmail.com
