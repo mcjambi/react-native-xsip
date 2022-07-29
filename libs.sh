@@ -56,8 +56,8 @@ if [ "$DOWNLOAD" = true ]; then
     mkdir -p "${DIR}/ios/VialerPJSIP.framework"
 
     # mv -vn "${DIR}/dist/Vialer-pjsip-iOS-3.5/VialerPJSIP.framework/Versions/Current/*" "${DIR}/ios/VialerPJSIP.framework"
-    cp -R "${DIR}/dist/Vialer-pjsip-iOS-3.5/VialerPJSIP.framework/Versions/Current/" "${DIR}/ios/VialerPJSIP.framework"
-    mv -vn "${DIR}/dist/VialerPJSIP" "${DIR}/ios/VialerPJSIP.framework/VialerPJSIP"
+    cp -R "${DIR}/dist/Vialer-pjsip-iOS-3.5/VialerPJSIP.framework/Versions/Current/Headers" "${DIR}/ios/VialerPJSIP.framework"
+    mv "${DIR}/dist/VialerPJSIP" "${DIR}/ios/VialerPJSIP.framework/VialerPJSIP"
 
     # then remove all dist 
     rm -Rf "${DIR}/dist"
