@@ -37,3 +37,8 @@ if [ "$DOWNLOAD" = true ]; then
 
     echo "${VERSION}" > ${LOCK}
 fi
+
+if [ "$DOWNLOAD" = false ]; then
+    CURRENT_VERSION=$(cat ${LOCK})
+    echo "I have downloaded! Check it again or remove ${LOCK} file. ${CURRENT_VERSION}"
+fi
