@@ -9,11 +9,16 @@ DEST=".libs.tar.gz"
 DOWNLOAD=true
 
 if ! type "wget" > /dev/null; then
-    echo "Missed curl dependency" >&2;
+    echo "Missed wget dependency" >&2;
     exit 1;
 fi
 if ! type "tar" > /dev/null; then
     echo "Missed tar dependency" >&2;
+    exit 1;
+fi
+
+if ! type "git-lfs" > /dev/null; then
+    echo "Missed git-lfs dependency" >&2;
     exit 1;
 fi
 
