@@ -7,6 +7,9 @@ export default class Account {
 
     constructor(data) {
         this._data = data;
+        if (!  Object.prototype.hasOwnProperty.call(data, "registration") ) {
+            throw new Error("Your input has a very wrong value");
+        }
         this._registration = new AccountRegistration(data['registration']);
     }
 

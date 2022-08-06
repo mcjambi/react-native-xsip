@@ -74,13 +74,13 @@ export default class Endpoint extends EventEmitter {
                     let accounts = [];
                     let calls = [];
 
-                    if (data.hasOwnProperty('accounts')) {
+                    if (Object.prototype.hasOwnProperty.call(data, "accounts")) {
                         for (let d of data['accounts']) {
                             accounts.push(new Account(d));
                         }
                     }
 
-                    if (data.hasOwnProperty('calls')) {
+                    if (Object.prototype.hasOwnProperty.call(data, "calls")) {
                         for (let d of data['calls']) {
                             calls.push(new Call(d));
                         }
@@ -89,7 +89,8 @@ export default class Endpoint extends EventEmitter {
                     let extra = {};
 
                     for (let key in data) {
-                        if (data.hasOwnProperty(key) && key != "accounts" && key != "calls") {
+                        
+                        if ( Object.prototype.hasOwnProperty.call(data, key) && key != "accounts" && key != "calls") {
                             extra[key] = data[key];
                         }
                     }
