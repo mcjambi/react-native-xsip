@@ -1,7 +1,7 @@
 { 
    "compilerOptions":{ 
       "baseUrl":".",
-      "outDir":"./dist/",
+      "outDir":"./build/",
       "sourceMap":true,
       "noImplicitAny":false,
       "module":"es6",

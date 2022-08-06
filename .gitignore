@@ -1,5 +1,8 @@
 # Logs
 logs
+dist
+ios/VialerPJSIP.framework
+react-native-pjsip-builder-main
 *.log
 npm-debug.log*
 yarn-debug.log*
