@@ -37,6 +37,7 @@ fi
 # Rebuild using typescript
     cd "${DIR}/"
     tsc
+    cd ~
 
 
 
