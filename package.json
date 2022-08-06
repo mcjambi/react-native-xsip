@@ -3,7 +3,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "postinstall": "bash libs.sh",
+    "postinstall": "npm run build && bash libs.sh",
     "lint": "eslint ./src",
     "build": "rm -rf dist && babel src --out-dir dist --source-maps --extensions \".ts,.js\"",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
@@ -57,5 +57,5 @@
     "type": "git",
     "url": "git+https://github.com/mcjambi/react-native-xsip.git"
   },
-  "version": "2.10.5"
+  "version": "2.10.6"
 }
