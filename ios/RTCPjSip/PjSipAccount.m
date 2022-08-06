@@ -159,7 +159,7 @@
     NSDictionary * registration = @{
         @"status": [PjSipUtil toString:(pj_str_t *) pjsip_get_status_text(info.status)],
         @"statusText": [PjSipUtil toString:&info.status_text],
-        @"active": @"test",
+        @"active": [PjSipUtil isActive:&info.expires],
         @"reason": @"test"
     };
     

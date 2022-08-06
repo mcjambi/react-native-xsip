@@ -11,16 +11,17 @@ buildscript {
 }
 
 repositories {
+    google()
     jcenter()
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         ndk {
@@ -30,7 +31,7 @@ android {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile "com.google.code.gson:gson:2.+"
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.facebook.react:react-native:+'
+    implementation "com.google.code.gson:gson:2.+"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

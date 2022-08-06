@@ -35,6 +35,14 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void stop(Callback callback) {
+        int id = receiver.register(callback);
+        Intent intent = PjActions.createStopIntent(id, getReactApplicationContext());
+
+        getReactApplicationContext().stopService(intent);
+    }
+
+    @ReactMethod
     public void changeServiceConfiguration(ReadableMap configuration, Callback callback) {
         int id = receiver.register(callback);
         Intent intent = PjActions.createSetServiceConfigurationIntent(id, configuration, getReactApplicationContext());
@@ -59,6 +67,20 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     public void deleteAccount(int accountId, Callback callback) {
         int callbackId = receiver.register(callback);
         Intent intent = PjActions.createAccountDeleteIntent(callbackId, accountId, getReactApplicationContext());
+        getReactApplicationContext().startService(intent);
+    }
+
+    @ReactMethod
+    public void getAccount(int accountId, Callback callback) {
+        int callbackId = receiver.register(callback);
+        Intent intent = PjActions.createGetAccountIntent(callbackId, accountId, getReactApplicationContext());
+        getReactApplicationContext().startService(intent);
+    }
+
+    @ReactMethod
+    public void getAccounts(Callback callback) {
+        int callbackId = receiver.register(callback);
+        Intent intent = PjActions.createGetAccountsIntent(callbackId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 
@@ -132,7 +154,6 @@ public class PjSipModule extends ReactContextBaseJavaModule {
         getReactApplicationContext().startService(intent);
     }
 
-    
     @ReactMethod
     public void xferCall(int callId, String destination, Callback callback) {
         int callbackId = receiver.register(callback);

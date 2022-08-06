@@ -3,7 +3,7 @@
 @implementation PjSipUtil {
 
 }
-+ (NSString *) toString : (pj_str_t *)pjStr {
++(NSString *) toString : (pj_str_t *)pjStr {
     if (pjStr->slen < 0) {
         return [NSNull null];
     }
@@ -13,6 +13,13 @@
                    length:pjStr->slen
                  encoding:NSUTF8StringEncoding];
 }
+
++(NSNumber *) isActive : (unsigned *)expires {
+    return *expires == PJSIP_EXPIRES_NOT_SPECIFIED
+        ? [NSNumber numberWithBool:NO]
+        : [NSNumber numberWithBool:YES];
+}
+
 
 +(BOOL) isEmptyString : (NSString *)string
 {

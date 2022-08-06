@@ -4,6 +4,7 @@
 @interface PjSipUtil : NSObject
 
 +(NSString *) toString: (pj_str_t *) str;
++(NSNumber *) isActive: (unsigned *) expires;
 +(BOOL) isEmptyString : (NSString *) str;
 
 +(NSString *) callStateToString: (pjsip_inv_state) state;
