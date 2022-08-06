@@ -119,19 +119,20 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void useSpeaker(int callId, Callback callback) {
+    public void useSpeaker(Callback callback) {
         int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createUseSpeakerCallIntent(callbackId, callId, getReactApplicationContext());
+        Intent intent = PjActions.createUseSpeakerCallIntent(callbackId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 
     @ReactMethod
-    public void useEarpiece(int callId, Callback callback) {
+    public void useEarpiece(Callback callback) {
         int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createUseEarpieceCallIntent(callbackId, callId, getReactApplicationContext());
+        Intent intent = PjActions.createUseEarpieceCallIntent(callbackId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 
+    
     @ReactMethod
     public void xferCall(int callId, String destination, Callback callback) {
         int callbackId = receiver.register(callback);

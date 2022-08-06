@@ -183,20 +183,18 @@ public class PjActions {
         return intent;
     }
 
-    public static Intent createUseSpeakerCallIntent(int callbackId, int callId, Context context) {
+    public static Intent createUseSpeakerCallIntent(int callbackId, Context context) {
         Intent intent = new Intent(context, PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_SPEAKER_CALL);
         intent.putExtra("callback_id", callbackId);
-        intent.putExtra("call_id", callId);
 
         return intent;
     }
 
-    public static Intent createUseEarpieceCallIntent(int callbackId, int callId, Context context) {
+    public static Intent createUseEarpieceCallIntent(int callbackId, Context context) {
         Intent intent = new Intent(context, PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_EARPIECE_CALL);
         intent.putExtra("callback_id", callbackId);
-        intent.putExtra("call_id", callId);
 
         return intent;
     }

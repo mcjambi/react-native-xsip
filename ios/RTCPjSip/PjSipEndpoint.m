@@ -207,7 +207,19 @@
 }
 
 - (PjSipAccount *) findAccount: (int) accountId {
+    NSLog([NSString stringWithFormat: @"FINDING ACCOUNT WITH ID: %d", accountId]);
     return self.accounts[@(accountId)];
+}
+
+- (NSMutableArray *)getAccounts {
+    NSMutableArray *accountsResult = [[NSMutableArray alloc] initWithCapacity:[@([self.accounts count]) unsignedIntegerValue]];
+
+    for (NSString *key in self.accounts) {
+        PjSipAccount *acc = self.accounts[key];
+        [accountsResult addObject:[acc toJsonDictionary]];
+    }
+    
+    return accountsResult;
 }
 
 
@@ -387,6 +399,7 @@ static void onCallReceived(pjsua_acc_id accId, pjsua_call_id callId, pjsip_rx_da
 
 static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
     PjSipEndpoint* endpoint = [PjSipEndpoint instance];
+    NSLog(@"ON CALL STATE CHANGED: %s", event->body.rx_msg.rdata);
     
     pjsua_call_info callInfo;
     pjsua_call_get_info(callId, &callInfo);

@@ -36,6 +36,14 @@ RCT_EXPORT_METHOD(start: (NSDictionary *) config callback: (RCTResponseSenderBlo
     callback(@[@TRUE, result]);
 }
 
+// Stub method
+RCT_EXPORT_METHOD(stop: (RCTResponseSenderBlock) callback) {
+    // [PjSipEndpoint instance].bridge = self.bridge;
+
+    // [[PjSipEndpoint instance] stop: config];
+    callback(@[@TRUE]);
+}
+
 RCT_EXPORT_METHOD(updateStunServers: (int) accountId stunServerList:(NSArray *) stunServerList callback:(RCTResponseSenderBlock) callback) {
     [[PjSipEndpoint instance] updateStunServers:accountId stunServerList:stunServerList];
     callback(@[@TRUE]);
@@ -51,6 +59,21 @@ RCT_EXPORT_METHOD(createAccount: (NSDictionary *) config callback:(RCTResponseSe
 RCT_EXPORT_METHOD(deleteAccount: (int) accountId callback:(RCTResponseSenderBlock) callback) {
     [[PjSipEndpoint instance] deleteAccount:accountId];
     callback(@[@TRUE]);
+}
+
+RCT_EXPORT_METHOD(getAccount: (int) accountId callback:(RCTResponseSenderBlock) callback) {
+    @try {
+        PjSipAccount *account = [[PjSipEndpoint instance] findAccount:accountId];
+        callback(@[@TRUE, [account toJsonDictionary]]);
+    }
+    @catch (NSException * e) {
+        callback(@[@FALSE, e.reason]);
+    }
+}
+
+RCT_EXPORT_METHOD(getAccounts: callback: (RCTResponseSenderBlock) callback) {
+    NSMutableArray *result = [[PjSipEndpoint instance] getAccounts];
+    callback(@[@TRUE, result]);
 }
 
 RCT_EXPORT_METHOD(registerAccount: (int) accountId renew:(BOOL) renew callback:(RCTResponseSenderBlock) callback) {
@@ -225,11 +248,11 @@ RCT_EXPORT_METHOD(dtmfCall: (int) callId digits: (NSString *) digits callback:(R
     }
 }
 
-RCT_EXPORT_METHOD(useSpeaker: (int) callId callback:(RCTResponseSenderBlock) callback) {
+RCT_EXPORT_METHOD(useSpeaker: (RCTResponseSenderBlock) callback) {
     [[PjSipEndpoint instance] useSpeaker];
 }
 
-RCT_EXPORT_METHOD(useEarpiece: (int) callId callback:(RCTResponseSenderBlock) callback) {
+RCT_EXPORT_METHOD(useEarpiece: (RCTResponseSenderBlock) callback) {
     [[PjSipEndpoint instance] useEarpiece];
 }
 
@@ -240,10 +263,21 @@ RCT_EXPORT_METHOD(activateAudioSession: (RCTResponseSenderBlock) callback) {
     if (status != PJ_SUCCESS) {
         NSLog(@"Failed to active audio session");
     }
+    callback(@[@TRUE]);
 }
 
 RCT_EXPORT_METHOD(deactivateAudioSession: (RCTResponseSenderBlock) callback) {
-    pjsua_set_no_snd_dev();
+    @try {
+        NSLog(@"TELEPHONY TRACE: Deactivate audio session");
+        pjsua_set_no_snd_dev();
+        NSLog(@"TELEPHONY TRACE: Before callback");
+        callback(@[@TRUE]);
+        NSLog(@"TELEPHONY TRACE: After callback");
+    }
+    @catch (NSException * e) {
+        NSLog(@"TELEPHONY TRACE: Error!");
+        callback(@[@FALSE, e.reason]);
+    }
 }
 
 #pragma mark - Settings

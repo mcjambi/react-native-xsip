@@ -19,11 +19,13 @@
 +(instancetype)instance;
 
 -(NSDictionary *)start: (NSDictionary *) config;
+-(NSDictionary *)stop: (NSDictionary *) config;
 
 -(void) updateStunServers: (int) accountId stunServerList:(NSArray *)stunServerList;
 
 -(PjSipAccount *)createAccount:(NSDictionary*) config;
 -(void) deleteAccount:(int) accountId;
+-(NSMutableArray *)getAccounts;
 -(PjSipAccount *)findAccount:(int)accountId;
 -(PjSipCall *)makeCall:(PjSipAccount *) account destination:(NSString *)destination callSettings: (NSDictionary *)callSettings msgData: (NSDictionary *)msgData;
 -(void)pauseParallelCalls:(PjSipCall*) call; // TODO: Remove this feature.
