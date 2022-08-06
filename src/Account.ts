@@ -1,15 +1,31 @@
 import AccountRegistration from './AccountRegistration'
 
+export type AccountConfiguration = {
+    id: number,
+    uri: string,
+    name: string,
+    username: string,
+    domain: string | null,
+    password: string,
+    proxy: string,
+    transport: string,
+    contactParams: string,
+    contactUriParams: string,
+    regServer: string,
+    regTimeout: string,
+    regContactParams: string,
+    regHeaders: Object
+};
+
 /**
  * This describes account configuration and registration status
  */
 export default class Account {
+    _data: AccountConfiguration;
+    _registration: AccountRegistration;
 
-    constructor(data) {
+    constructor(data: any) {
         this._data = data;
-        if (!  Object.prototype.hasOwnProperty.call(data, "registration") ) {
-            throw new Error("Your input has a very wrong value");
-        }
         this._registration = new AccountRegistration(data['registration']);
     }
 
@@ -17,7 +33,7 @@ export default class Account {
      * The account ID.
      * @returns {int}
      */
-    getId() {
+    getId(): number {
         return this._data.id;
     }
 
@@ -25,7 +41,7 @@ export default class Account {
      * This is the URL to be put in the request URI for the registration, and will look something like "sip:serviceprovider".
      * @returns {String}
      */
-    getURI() {
+    getURI(): string {
         return this._data.uri;
     }
 
@@ -33,7 +49,7 @@ export default class Account {
      * Full name specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getName() {
+    getName(): string {
         return this._data.name;
     }
 
@@ -41,7 +57,7 @@ export default class Account {
      * Username specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getUsername() {
+    getUsername(): string {
         return this._data.username;
     }
 
@@ -49,7 +65,7 @@ export default class Account {
      * Domain specified in Endpoint.createAccount().
      * @returns {int|null}
      */
-    getDomain() {
+    getDomain(): string | null {
         return this._data.domain;
     }
 
@@ -57,7 +73,7 @@ export default class Account {
      * Password specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getPassword() {
+    getPassword(): string {
         return this._data.password;
     }
 
@@ -65,7 +81,7 @@ export default class Account {
      * Proxy specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getProxy() {
+    getProxy(): string {
         return this._data.proxy;
     }
 
@@ -73,7 +89,7 @@ export default class Account {
      * Transport specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getTransport() {
+    getTransport(): string {
         return this._data.transport;
     }
 
@@ -82,7 +98,7 @@ export default class Account {
      * for this account.
      * @returns {String}
      */
-    getContactParams() {
+    getContactParams(): string {
         return this._data.contactParams;
     }
 
@@ -91,7 +107,7 @@ export default class Account {
      * for this account.
      * @returns {String}
      */
-    getContactUriParams() {
+    getContactUriParams(): string {
         return this._data.contactUriParams;
     }
 
@@ -99,7 +115,7 @@ export default class Account {
      * Port specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getRegServer() {
+    getRegServer(): string {
         return this._data.regServer || "";
     }
 
@@ -107,21 +123,21 @@ export default class Account {
      * Port specified in Endpoint.createAccount().
      * @returns {String}
      */
-    getRegTimeout() {
+    getRegTimeout(): string {
         return this._data.regTimeout;
     }
 
     /**
      * @returns {String}
      */
-    getRegContactParams() {
+    getRegContactParams(): string {
         return this._data.regContactParams;
     }
 
     /**
      * @returns {Object}
      */
-    getRegHeaders() {
+    getRegHeaders(): Object {
         return this._data.regHeaders;
     }
 
@@ -129,7 +145,7 @@ export default class Account {
      * Account registration status.
      * @returns {AccountRegistration}
      */
-    getRegistration() {
+    getRegistration(): AccountRegistration {
         return this._registration;
     }
 }

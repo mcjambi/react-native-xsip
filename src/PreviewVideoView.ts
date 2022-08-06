@@ -9,6 +9,6 @@ const PreviewVideoView = {
   },
 };
 
-const View = requireNativeComponent('PjSipPreviewVideoView', null);
+const View = requireNativeComponent('PjSipPreviewVideoView');
 
 export default View;

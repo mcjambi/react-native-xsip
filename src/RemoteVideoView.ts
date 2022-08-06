@@ -9,6 +9,6 @@ const RemoteVideoView = {
   },
 };
 
-const View = requireNativeComponent('PjSipRemoteVideoView', null);
+const View = requireNativeComponent('PjSipRemoteVideoView');
 
 export default View;

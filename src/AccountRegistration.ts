@@ -3,10 +3,10 @@
  * by calling account.getRegistration().
  */
 export default class AccountRegistration {
-    _status;
-    _statusText;
-    _active;
-    _reason;
+    _status: string;
+    _statusText: string;
+    _active: boolean;
+    _reason: string;
 
     constructor({status, statusText, active, reason}) {
         this._status = status;
@@ -22,7 +22,7 @@ export default class AccountRegistration {
      *
      * @returns {string|null}
      */
-    getStatus() {
+    getStatus(): string | null {
         return this._status;
     }
 
@@ -31,7 +31,7 @@ export default class AccountRegistration {
      *
      * @returns {string|null}
      */
-    getStatusText() {
+    getStatusText(): string | null {
         return this._statusText;
     }
 
@@ -41,7 +41,7 @@ export default class AccountRegistration {
      *
      * @returns boolean
      */
-    isActive() {
+    isActive(): boolean {
         return this._active;
     }
 
@@ -50,11 +50,16 @@ export default class AccountRegistration {
      *
      * @returns {String|null}
      */
-    getReason() {
+    getReason(): string | null {
         return this._reason;
     }
 
-    toJson() {
+    toJson(): {
+        status: string,
+        statusText: string,
+        active: boolean,
+        reason: string,
+    } {
         return  {
             status: this._status,
             statusText: this._statusText,
