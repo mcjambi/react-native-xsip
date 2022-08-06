@@ -28,6 +28,19 @@ if ! type "git-lfs" > /dev/null; then
     exit 1;
 fi
 
+if ! type "tsc" > /dev/null; then
+    echo "Missed TYPESCRIPT dependency" >&2;
+    exit 1;
+fi
+
+
+# Rebuild using typescript
+    cd "${DIR}/"
+    tsc
+
+
+
+
 if [ -f ${LOCK} ]; then
     CURRENT_VERSION=$(cat ${LOCK})
 
