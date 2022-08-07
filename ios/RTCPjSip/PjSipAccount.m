@@ -5,6 +5,7 @@
 #import "PjSipAccount.h"
 #import "PjSipUtil.h"
 
+
 @implementation PjSipAccount
 
 + (instancetype)itemConfig:(NSDictionary *)config {
@@ -30,7 +31,7 @@
         self.regTimeout = config[@"regTimeout"] == nil ? [NSNumber numberWithInteger:600] : config[@"regTimeout"];
         self.regHeaders = config[@"regHeaders"] == nil ? [NSNull null] : config[@"regHeaders"];
         self.regContactParams = config[@"regContactParams"] == nil ? [NSNull null] : config[@"regContactParams"];
-        self.regOnAdd = config[@"regOnAdd"] == @YES || config[@"regOnAdd"] == nil ? true : false;
+        self.regOnAdd = [config[@"regOnAdd"]  isEqual: @YES] || config[@"regOnAdd"] == nil ? true : false;
 
         pj_status_t status;
 

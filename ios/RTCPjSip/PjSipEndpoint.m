@@ -10,6 +10,8 @@
 #import "PjSipEndpoint.h"
 #import "PjSipMessage.h"
 
+#define THIS_FILE "APP"
+
 @implementation PjSipEndpoint
 
 + (instancetype) instance {
@@ -184,7 +186,7 @@
     pj_pool_t *pool = pjsua_pool_create("tmp-pjsua", 1000, 1000);
     pjsua_acc_config_default(&cfg_update);
     pjsua_acc_get_config(accountId, pool, &cfg_update);
-    NSLog([NSString stringWithFormat: @"I AM ACC ID: %d", accountId]);
+    NSLog(@"%@", [NSString stringWithFormat: @"I AM ACC ID: %d", accountId]);
     pjsua_update_stun_servers(size, srv, false);
     
     pjsua_acc_modify(accountId, &cfg_update);
@@ -207,7 +209,7 @@
 }
 
 - (PjSipAccount *) findAccount: (int) accountId {
-    NSLog([NSString stringWithFormat: @"FINDING ACCOUNT WITH ID: %d", accountId]);
+    NSLog(@"%@", [NSString stringWithFormat: @"FINDING ACCOUNT WITH ID: %d", accountId]);
     return self.accounts[@(accountId)];
 }
 
@@ -399,11 +401,17 @@ static void onCallReceived(pjsua_acc_id accId, pjsua_call_id callId, pjsip_rx_da
 
 static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
     PjSipEndpoint* endpoint = [PjSipEndpoint instance];
-    NSLog(@"ON CALL STATE CHANGED: %s", event->body.rx_msg.rdata);
     
     pjsua_call_info callInfo;
+    PJ_UNUSED_ARG(event);
     pjsua_call_get_info(callId, &callInfo);
     
+//    PJ_LOG(3,(THIS_FILE, "JAMVIET_E _ Call %d state=%.*s", callId,
+//        (int)callInfo.state_text.slen,
+//              callInfo.state_text.ptr)
+//    );
+// it will returns string "DISCONNCTD"
+
     PjSipCall* call = [endpoint findCall:callId];
     
     if (!call) {
@@ -411,8 +419,12 @@ static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
     }
     
     [call onStateChanged:callInfo];
+
+    NSLog(@"JAMVIET.COMMA CALLID: %d, STATE NUM %d, STATE %s", callId, (int)callInfo.state, callInfo.state_text.ptr);
+    const char *callStatusByText = callInfo.state_text.ptr;
+    const char *__PJSIP_INV_STATE_DISCONNECTED = "DISCONNCTD";
     
-    if (callInfo.state == PJSIP_INV_STATE_DISCONNECTED) {
+    if ( strcmp( callStatusByText, __PJSIP_INV_STATE_DISCONNECTED) == 0 ) {
         [endpoint.calls removeObjectForKey:@(callId)];
         [endpoint emmitCallTerminated:call];
     } else {

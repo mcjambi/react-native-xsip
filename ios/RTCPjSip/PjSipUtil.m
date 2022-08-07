@@ -23,7 +23,7 @@
 +(BOOL) isEmptyString : (NSString *)string
 {
     if([string isKindOfClass:[NSNull class]] || [string length] == 0 ||
-       [string isEqualToString:@""]||[string  isEqualToString:NULL]  ||
+       [string isEqualToString:@""]||[string  isEqualToString:  @""]  ||
        string == nil)
     {
         return YES;         //IF String Is An Empty String
@@ -48,7 +48,7 @@
         case PJSIP_INV_STATE_DISCONNECTED:
             return @"PJSIP_INV_STATE_DISCONNECTED";
         default:
-            return [NSNull null];
+            return @"JAMVIET_UNKNOWN_STATE";
     }
 }
 
@@ -165,7 +165,7 @@
         case PJSIP_SC_NOT_ACCEPTABLE_ANYWHERE:
             return @"PJSIP_SC_NOT_ACCEPTABLE_ANYWHERE";
         default:
-            return [NSNull null];
+            return @"JAMVIET_UNKNOWN_STATE_callStatusToString";
     }
 }
 
@@ -180,7 +180,7 @@
         case PJMEDIA_DIR_ENCODING_DECODING:
             return @"PJMEDIA_DIR_ENCODING_DECODING";
         default:
-            return [NSNull null];
+            return @"JAMVIET_UNKNOWN_STATE_mediaDirToString";
     }
 }
 
@@ -197,7 +197,7 @@
         case PJSUA_CALL_MEDIA_ERROR:
             return @"PJSUA_CALL_MEDIA_ERROR";
         default:
-            return [NSNull null];
+            return @"JAMVIET_UNKNOWN_STATE_mediaStatusToString";
     }
 }
 
@@ -214,7 +214,7 @@
         case PJMEDIA_TYPE_UNKNOWN:
             return @"PJMEDIA_TYPE_UNKNOWN";
         default:
-            return [NSNull null];
+            return @"JAMVIET_UNKNOWN_STATE_mediaTypeToString";
     }
 }
 
