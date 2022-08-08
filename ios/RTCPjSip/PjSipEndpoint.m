@@ -56,7 +56,8 @@
         
 //        cfg.cfg.cb.on_call_media_state = &on_call_media_state;
 //        cfg.cfg.cb.on_incoming_call = &on_incoming_call;
-//        cfg.cfg.cb.on_call_tsx_state = &on_call_tsx_state;
+        cfg.cb.on_call_tsx_state = &on_call_tsx_state;
+       // cfg.cb.on_dtmf_digit = &dtmf_callback;
 //        cfg.cfg.cb.on_dtmf_digit = &call_on_dtmf_callback;
 //        cfg.cfg.cb.on_call_redirected = &call_on_redirected;
 //        cfg.cfg.cb.on_reg_state = &on_reg_state;
@@ -65,11 +66,12 @@
 //        cfg.cfg.cb.on_buddy_evsub_state = &on_buddy_evsub_state;
 //        cfg.cfg.cb.on_pager = &on_pager;
 //        cfg.cfg.cb.on_typing = &on_typing;
-//        cfg.cfg.cb.on_call_transfer_status = &on_call_transfer_status;
+        // cfg.cb.on_call_transfer_status = &onCallTransferStatus;
+        //cfg.cb.on_call_replace_request2 = &on_call_replace_request2;
 //        cfg.cfg.cb.on_call_replaced = &on_call_replaced;
 //        cfg.cfg.cb.on_nat_detect = &on_nat_detect;
 //        cfg.cfg.cb.on_mwi_info = &on_mwi_info;
-//        cfg.cfg.cb.on_transport_state = &on_transport_state;
+        //   cfg.cb.on_transport_state = &onTransportState;
 //        cfg.cfg.cb.on_ice_transport_error = &on_ice_transport_error;
 //        cfg.cfg.cb.on_snd_dev_operation = &on_snd_dev_operation;
 //        cfg.cfg.cb.on_call_media_event = &on_call_media_event;
@@ -399,17 +401,25 @@ static void onCallReceived(pjsua_acc_id accId, pjsua_call_id callId, pjsip_rx_da
     [endpoint emmitCallReceived:call];
 }
 
+/**
+ Run only on call out, when call-in, use other hook ...
+ */
 static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
     PjSipEndpoint* endpoint = [PjSipEndpoint instance];
     
     pjsua_call_info callInfo;
-    PJ_UNUSED_ARG(event);
     pjsua_call_get_info(callId, &callInfo);
+//    pjsip_inv_state state = callInfo.state;
     
-//    PJ_LOG(3,(THIS_FILE, "JAMVIET_E _ Call %d state=%.*s", callId,
-//        (int)callInfo.state_text.slen,
-//              callInfo.state_text.ptr)
-//    );
+    PJ_UNUSED_ARG(event);
+    
+    // PJ_LOG(3,(THIS_FILE, "JAMVIET_E _ Call %d state=%.*s  LAST STATUS: %s", callId,
+    //     (int)callInfo.state_text.slen,
+    //           callInfo.state_text.ptr,
+    //           callInfo.last_status_text.ptr
+    //           )
+    // );
+    
 // it will returns string "DISCONNCTD"
 
     PjSipCall* call = [endpoint findCall:callId];
@@ -418,19 +428,61 @@ static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
         return;
     }
     
-    [call onStateChanged:callInfo];
-
-    NSLog(@"JAMVIET.COMMA CALLID: %d, STATE NUM %d, STATE %s", callId, (int)callInfo.state, callInfo.state_text.ptr);
-    const char *callStatusByText = callInfo.state_text.ptr;
-    const char *__PJSIP_INV_STATE_DISCONNECTED = "DISCONNCTD";
+//    if ( statusCode == PJSIP_SC_BUSY_HERE ) {
+//        NSLog(@"JAMVIET IS BUSY NOW");
+//    }
+    // useless
+    // [call onStateChanged:callInfo];
+    //statusLine
     
-    if ( strcmp( callStatusByText, __PJSIP_INV_STATE_DISCONNECTED) == 0 ) {
+    // printf("JAMVIET.COMMA New status: %d %s (%d)\n", callInfo.state, callInfo.state_text.ptr, callId);
+    // printf("JAMVIET.COMMA Reason: %s (%d)\n", callInfo.last_status_text.ptr, callId);
+    
+//    const char *callStatusByText = callInfo.state_text.ptr;
+//    const char *__PJSIP_INV_STATE_DISCONNECTED = "DISCONNCTD";
+//if ( strcmp( callStatusByText, __PJSIP_INV_STATE_DISCONNECTED) == 0 ) {
+
+    if ( (int)callInfo.state == PJSIP_INV_STATE_DISCONNECTED ) {
         [endpoint.calls removeObjectForKey:@(callId)];
         [endpoint emmitCallTerminated:call];
     } else {
         [endpoint emmitCallChanged:call];
     }
 }
+
+//on_call_tsx_state
+// 
+// https://www.pjsip.org/pjsip/docs/html/group__PJSIP__TRANSACT__TRANSACTION.htm#gaf361da71faf4b6d47ca50db1b43e95b7
+static void on_call_tsx_state(pjsua_call_id call_id, pjsip_transaction *tsx, pjsip_event *e) {
+    PjSipEndpoint* endpoint = [PjSipEndpoint instance];
+
+    PJ_UNUSED_ARG(e);
+    pjsua_call_info ci;
+    pjsua_call_get_info(call_id, &ci);
+    pjsip_tsx_state_e JamvietTerminatedCallIfCalleeHangup = tsx->state;
+    
+    PjSipCall* call = [endpoint findCall:call_id];
+
+    if (!call) {
+        return;
+    }
+    
+    // printf("TSX ===> JAMVIET: %d %s (%d)\n", ci.state, ci.state_text.ptr, call_id);
+    // printf("TSX ===> JAMVIET_2222 : %s (%d)\n", JamvietTerminatedCallIfCalleeHangup, call_id);
+    
+    if ( JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_TERMINATED || JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_DESTROYED ) {
+        [endpoint.calls removeObjectForKey:@(call_id)];
+        [endpoint emmitCallTerminated:call];
+    }
+    
+}
+
+
+
+static void dtmf_callback(pjsua_call_id call_id, int dtmf) {
+  printf("JAMVIET dtmf_callback Call ID %d got DTMF %c\n", call_id, dtmf);
+}
+
 
 static void onCallMediaStateChanged(pjsua_call_id callId) {
     PjSipEndpoint* endpoint = [PjSipEndpoint instance];
