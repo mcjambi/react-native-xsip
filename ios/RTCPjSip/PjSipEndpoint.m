@@ -454,34 +454,30 @@ static void onCallStateChanged(pjsua_call_id callId, pjsip_event *event) {
 // 
 // https://www.pjsip.org/pjsip/docs/html/group__PJSIP__TRANSACT__TRANSACTION.htm#gaf361da71faf4b6d47ca50db1b43e95b7
 static void on_call_tsx_state(pjsua_call_id call_id, pjsip_transaction *tsx, pjsip_event *e) {
-    PjSipEndpoint* endpoint = [PjSipEndpoint instance];
 
-    PJ_UNUSED_ARG(e);
-    pjsua_call_info ci;
-    pjsua_call_get_info(call_id, &ci);
-    pjsip_tsx_state_e JamvietTerminatedCallIfCalleeHangup = tsx->state;
+    // PjSipEndpoint* endpoint = [PjSipEndpoint instance];
+
+    // PJ_UNUSED_ARG(e);
+    // pjsua_call_info ci;
+    // pjsua_call_get_info(call_id, &ci);
+    // pjsip_tsx_state_e JamvietTerminatedCallIfCalleeHangup = tsx->state;
     
-    PjSipCall* call = [endpoint findCall:call_id];
+    // PjSipCall* call = [endpoint findCall:call_id];
 
-    if (!call) {
-        return;
-    }
+    // if (!call) {
+    //     return;
+    // }
     
     // printf("TSX ===> JAMVIET: %d %s (%d)\n", ci.state, ci.state_text.ptr, call_id);
     // printf("TSX ===> JAMVIET_2222 : %s (%d)\n", JamvietTerminatedCallIfCalleeHangup, call_id);
     
-    if ( JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_TERMINATED || JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_DESTROYED ) {
-        [endpoint.calls removeObjectForKey:@(call_id)];
-        [endpoint emmitCallTerminated:call];
-    }
+    // if ( JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_TERMINATED || JamvietTerminatedCallIfCalleeHangup == PJSIP_TSX_STATE_DESTROYED ) {
+       // [endpoint.calls removeObjectForKey:@(call_id)];
+       // [endpoint emmitCallTerminated:call];
+    // }
     
 }
 
-
-
-static void dtmf_callback(pjsua_call_id call_id, int dtmf) {
-  printf("JAMVIET dtmf_callback Call ID %d got DTMF %c\n", call_id, dtmf);
-}
 
 
 static void onCallMediaStateChanged(pjsua_call_id callId) {
