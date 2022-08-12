@@ -46,6 +46,20 @@ export type EndpointConfiguration = {
  * @property {number} vid_cnt - Number of simultaneous active video streams for this call. Setting this to zero will disable video in this call.
  */
 
+
+
+type msgData = {
+    headers?: {
+        [propName: string]: string;
+    };
+    [propName: string]: any;
+}
+
+type TypedCallSettings = {
+    audioCount?: number,
+    videoCount?: number,
+}
+
 export default class Endpoint extends EventEmitter {
 
     constructor() {
@@ -290,10 +304,18 @@ export default class Endpoint extends EventEmitter {
      * @param account {Account}
      * @param destination {String} Destination SIP URI.
      * @param callSettings {PjSipCallSetttings} Outgoing call settings.
-     * @param msgSettings {PjSipMsgData} Outgoing call additional information to be sent with outgoing SIP message.
+     * @param msgData {PjSipMsgData} Outgoing call additional information to be sent with outgoing SIP message. Like: Custom headers
+     * headers: {
+     *  user-agent: "React Native"
+     * }
      */
-    makeCall(account: Account, destination: string, callSettings?: any, msgData?: any): Promise<Call> {
+    makeCall(account: Account, destination: string, callSettings?: TypedCallSettings, msgData?: msgData): Promise<Call> {
         destination = this._normalize(account, destination);
+
+        if ( msgData && typeof msgData !== "object" ) {
+            msgData = null;
+            console.warn( "msgData must be an object" );
+        }
 
         return new Promise(function(resolve, reject) {
             NativeModules.PjSipModule.makeCall(account.getId(), destination, callSettings, msgData, (successful, data) => {
