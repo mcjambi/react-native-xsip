@@ -40,6 +40,7 @@
 
         cfg.vid_in_auto_show = PJ_TRUE;
         cfg.vid_out_auto_transmit = PJ_TRUE;
+        cfg.ka_interval = 30;
 
         // General settings
         {

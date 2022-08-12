@@ -51,11 +51,11 @@
   "nativePackage": true,
   "optionalDependencies": {},
   "peerDependencies": {
-    "react-native": ">=0.60.0"
+    "react-native": ">=0.64.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mcjambi/react-native-xsip.git"
   },
-  "version": "2.10.13"
+  "version": "2.10.14"
 }
