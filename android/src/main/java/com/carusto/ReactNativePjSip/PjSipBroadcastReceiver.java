@@ -42,8 +42,6 @@ public class PjSipBroadcastReceiver extends BroadcastReceiver {
         IntentFilter filter = new IntentFilter();
         filter.addAction(PjActions.EVENT_STARTED);
         filter.addAction(PjActions.EVENT_ACCOUNT_CREATED);
-        filter.addAction(PjActions.EVENT_ACCOUNT_RETRIEVED);
-        filter.addAction(PjActions.EVENT_ACCOUNTS_RETRIEVED);
         filter.addAction(PjActions.EVENT_REGISTRATION_CHANGED);
         filter.addAction(PjActions.EVENT_CALL_RECEIVED);
         filter.addAction(PjActions.EVENT_CALL_CHANGED);
@@ -65,16 +63,7 @@ public class PjSipBroadcastReceiver extends BroadcastReceiver {
             case PjActions.EVENT_STARTED:
                 onCallback(intent);
                 break;
-            case PjActions.EVENT_STOPPED:
-                onCallback(intent);
-                break;
             case PjActions.EVENT_ACCOUNT_CREATED:
-                onCallback(intent);
-                break;
-            case PjActions.EVENT_ACCOUNT_RETRIEVED:
-                onCallback(intent);
-                break;
-            case PjActions.EVENT_ACCOUNTS_RETRIEVED:
                 onCallback(intent);
                 break;
             case PjActions.EVENT_REGISTRATION_CHANGED:

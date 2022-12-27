@@ -22,13 +22,10 @@ public class PjActions {
     public static final String TAG = "PjActions";
 
     public static final String ACTION_START = "start";
-    public static final String ACTION_STOP = "stop";
     public static final String ACTION_CREATE_ACCOUNT = "account_create";
     public static final String ACTION_CHANGE_CODEC_SETTINGS= "change_codec_settings'";
     public static final String ACTION_REGISTER_ACCOUNT = "account_register";
     public static final String ACTION_DELETE_ACCOUNT = "account_delete";
-    public static final String ACTION_GET_ACCOUNT = "account_get";
-    public static final String ACTION_GET_ACCOUNTS = "accounts_get";
     public static final String ACTION_MAKE_CALL = "call_make";
     public static final String ACTION_HANGUP_CALL = "call_hangup";
     public static final String ACTION_DECLINE_CALL = "call_decline";
@@ -47,10 +44,7 @@ public class PjActions {
     public static final String ACTION_SET_SERVICE_CONFIGURATION = "set_service_configuration";
 
     public static final String EVENT_STARTED = "com.carusto.account.started";
-    public static final String EVENT_STOPPED = "com.carusto.account.stopped";
     public static final String EVENT_ACCOUNT_CREATED = "com.carusto.account.created";
-    public static final String EVENT_ACCOUNT_RETRIEVED = "com.carusto.account.retrieved";
-    public static final String EVENT_ACCOUNTS_RETRIEVED = "com.carusto.accounts.retrieved";
     public static final String EVENT_REGISTRATION_CHANGED = "com.carusto.registration.changed";
     public static final String EVENT_CALL_CHANGED = "com.carusto.call.changed";
     public static final String EVENT_CALL_TERMINATED = "com.carusto.call.terminated";
@@ -65,14 +59,6 @@ public class PjActions {
         intent.putExtra("callback_id", callbackId);
 
         formatIntent(intent, configuration);
-
-        return intent;
-    }
-
-    public static Intent createStopIntent(int callbackId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
-        intent.setAction(PjActions.ACTION_STOP);
-        intent.putExtra("callback_id", callbackId);
 
         return intent;
     }
@@ -103,23 +89,6 @@ public class PjActions {
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("account_id", accountId);
         intent.putExtra("renew", renew);
-
-        return intent;
-    }
-
-    public static Intent createGetAccountIntent(int callbackId, int accountId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
-        intent.setAction(PjActions.ACTION_GET_ACCOUNT);
-        intent.putExtra("callback_id", callbackId);
-        intent.putExtra("account_id", accountId);
-
-        return intent;
-    }
-
-    public static Intent createGetAccountsIntent(int callbackId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
-        intent.setAction(PjActions.ACTION_GET_ACCOUNTS);
-        intent.putExtra("callback_id", callbackId);
 
         return intent;
     }
@@ -214,18 +183,20 @@ public class PjActions {
         return intent;
     }
 
-    public static Intent createUseSpeakerCallIntent(int callbackId, Context context) {
+    public static Intent createUseSpeakerCallIntent(int callbackId, int callId, Context context) {
         Intent intent = new Intent(context, PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_SPEAKER_CALL);
         intent.putExtra("callback_id", callbackId);
+        intent.putExtra("call_id", callId);
 
         return intent;
     }
 
-    public static Intent createUseEarpieceCallIntent(int callbackId, Context context) {
+    public static Intent createUseEarpieceCallIntent(int callbackId, int callId, Context context) {
         Intent intent = new Intent(context, PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_EARPIECE_CALL);
         intent.putExtra("callback_id", callbackId);
+        intent.putExtra("call_id", callId);
 
         return intent;
     }

@@ -5,7 +5,7 @@ const RemoteVideoView = {
   name: 'PjSipRemoteVideoView',
   propTypes: {
   	windowId: PropTypes.string.isRequired,
-	objectFit: PropTypes.oneOf(['contain', 'cover'])
+	  objectFit: PropTypes.oneOf(['contain', 'cover'])
   },
 };
 

@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: PjCamera.java 5019 2015-03-23 06:35:45Z nanang $ */
 /*
  * Copyright (C) 2015 Teluu Inc. (http://www.teluu.com)
  *

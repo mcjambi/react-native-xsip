@@ -1,14 +1,11 @@
 package com.carusto.ReactNativePjSip.dto;
 
 import android.content.Intent;
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import java.util.Map;
-import org.json.JSONObject;
 
 public class AccountConfigurationDTO {
-
-    private Integer id;
 
     public String name;
 
@@ -28,7 +25,6 @@ public class AccountConfigurationDTO {
 
     public String regServer;
 
-    @Nullable
     public Integer regTimeout;
 
     public Map<String, String> regHeaders;
@@ -36,14 +32,6 @@ public class AccountConfigurationDTO {
     public String regContactParams;
 
     public boolean regOnAdd;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -97,7 +85,6 @@ public class AccountConfigurationDTO {
         return regServer != null && regServer.length() > 0 ? regServer : "*";
     }
 
-    @Nullable
     public Integer getRegTimeout() {
         return regTimeout;
     }
@@ -124,25 +111,6 @@ public class AccountConfigurationDTO {
 
     public boolean isProxyNotEmpty() {
         return proxy != null && proxy.length() > 0;
-    }
-
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        try {
-            JSONObject registration = new JSONObject();
-            registration.put("status", "");
-            registration.put("statusText", "");
-            registration.put("active", false);
-            registration.put("reason", "");
-            json.put("id", getId());
-            json.put("name", getName());
-            json.put("username", getUsername());
-            json.put("domain", getDomain());
-            json.put("registration", registration);
-            return json;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static AccountConfigurationDTO fromIntent(Intent intent) {

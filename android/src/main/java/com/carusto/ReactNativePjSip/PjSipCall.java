@@ -45,8 +45,6 @@ public class PjSipCall extends Call {
     }
 
     public void hold() throws Exception {
-        CallInfo info = getInfo();
-
         if (isHeld) {
             return;
         }
@@ -293,9 +291,9 @@ public class PjSipCall extends Call {
                 videoStreamJson.put("captureDevice", info.getVideoCapDev());
                 videoStreamJson.put("windowId", info.getVideoIncomingWindowId());
 
-                json.put("dir", String.valueOf(info.getDir()));
-                json.put("type", String.valueOf(info.getType()));
-                json.put("status", String.valueOf(info.getStatus()));
+                json.put("dir", info.getDir().toString());
+                json.put("type", info.getType().toString());
+                json.put("status", info.getStatus().toString());
                 json.put("audioStream", audioStreamJson);
                 json.put("videoStream", videoStreamJson);
 

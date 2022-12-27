@@ -5,7 +5,7 @@ const PreviewVideoView = {
   name: 'PjSipPreviewVideoView',
   propTypes: {
     deviceId: PropTypes.number.isRequired,
-	objectFit: PropTypes.oneOf(['contain', 'cover'])
+	  objectFit: PropTypes.oneOf(['contain', 'cover'])
   },
 };
 

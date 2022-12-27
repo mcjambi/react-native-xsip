@@ -14,8 +14,8 @@ export {
   Account,
   Call,
   Endpoint,
-  // PreviewVideoView,
-  // RemoteVideoView,
+  PreviewVideoView,
+  RemoteVideoView,
 }
 
 export default {

@@ -35,14 +35,6 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void stop(Callback callback) {
-        int id = receiver.register(callback);
-        Intent intent = PjActions.createStopIntent(id, getReactApplicationContext());
-
-        getReactApplicationContext().stopService(intent);
-    }
-
-    @ReactMethod
     public void changeServiceConfiguration(ReadableMap configuration, Callback callback) {
         int id = receiver.register(callback);
         Intent intent = PjActions.createSetServiceConfigurationIntent(id, configuration, getReactApplicationContext());
@@ -67,20 +59,6 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     public void deleteAccount(int accountId, Callback callback) {
         int callbackId = receiver.register(callback);
         Intent intent = PjActions.createAccountDeleteIntent(callbackId, accountId, getReactApplicationContext());
-        getReactApplicationContext().startService(intent);
-    }
-
-    @ReactMethod
-    public void getAccount(int accountId, Callback callback) {
-        int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createGetAccountIntent(callbackId, accountId, getReactApplicationContext());
-        getReactApplicationContext().startService(intent);
-    }
-
-    @ReactMethod
-    public void getAccounts(Callback callback) {
-        int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createGetAccountsIntent(callbackId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 
@@ -141,16 +119,16 @@ public class PjSipModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void useSpeaker(Callback callback) {
+    public void useSpeaker(int callId, Callback callback) {
         int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createUseSpeakerCallIntent(callbackId, getReactApplicationContext());
+        Intent intent = PjActions.createUseSpeakerCallIntent(callbackId, callId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 
     @ReactMethod
-    public void useEarpiece(Callback callback) {
+    public void useEarpiece(int callId, Callback callback) {
         int callbackId = receiver.register(callback);
-        Intent intent = PjActions.createUseEarpieceCallIntent(callbackId, getReactApplicationContext());
+        Intent intent = PjActions.createUseEarpieceCallIntent(callbackId, callId, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
 

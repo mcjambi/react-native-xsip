@@ -8,8 +8,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-import com.carusto.ReactNativePjSip.dto.AccountConfigurationDTO;
-
 public class PjSipBroadcastEmiter {
 
     private static String TAG = "PjSipBroadcastEmiter";
@@ -48,14 +46,6 @@ public class PjSipBroadcastEmiter {
         }
     }
 
-    public void fireStopped(Intent original) {
-        Intent intent = new Intent();
-        intent.setAction(PjActions.EVENT_STOPPED);
-        intent.putExtra("callback_id", original.getIntExtra("callback_id", -1));
-
-        context.sendBroadcast(intent);
-    }
-
     public void fireIntentHandled(Intent original, JSONObject result) {
         Intent intent = new Intent();
         intent.setAction(PjActions.EVENT_HANDLED);
@@ -89,39 +79,6 @@ public class PjSipBroadcastEmiter {
         intent.putExtra("data", account.toJsonString());
 
         context.sendBroadcast(intent);
-    }
-
-    public void fireAccountRetrieved(Intent original, PjSipAccount account) {
-        Intent intent = new Intent();
-        intent.setAction(PjActions.EVENT_ACCOUNT_RETRIEVED);
-        intent.putExtra("callback_id", original.getIntExtra("callback_id", -1));
-        intent.putExtra("data", account.toJsonString());
-
-        context.sendBroadcast(intent);
-    }
-
-    public void fireAccountsRetrieved(Intent original, List<?> accounts) {
-        try {
-            JSONArray dataAccounts = new JSONArray();
-            for (Object account : accounts) {
-                if (account instanceof PjSipAccount) {
-                    PjSipAccount acc = (PjSipAccount) account;
-                    dataAccounts.put(acc.toJson());
-                } else if (account instanceof AccountConfigurationDTO) {
-                    AccountConfigurationDTO cfg = (AccountConfigurationDTO) account;
-                    dataAccounts.put(cfg.toJson());
-                }
-            }
-
-            Intent intent = new Intent();
-            intent.setAction(PjActions.EVENT_ACCOUNTS_RETRIEVED);
-            intent.putExtra("callback_id", original.getIntExtra("callback_id", -1));
-            intent.putExtra("data", dataAccounts.toString());
-
-            context.sendBroadcast(intent);
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to send ACCOUNTS_RETRIEVED event", e);
-        }
     }
 
     public void fireRegistrationChangeEvent(PjSipAccount account) {
